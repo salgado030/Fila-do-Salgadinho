@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
+
     <title>Teste Salgado</title>
+
 </head>
 
 <body>
@@ -19,30 +23,19 @@
         ENTRAR NA FILA
     </button>
 
-    <h2 id="resultado"></h2>
-
 
     <script>
-alert("JAVASCRIPT FUNCIONOU!");
-</script>
 
-        const botao = document.getElementById("entrar");
+        document
+            .getElementById("entrar")
+            .addEventListener("click", function() {
 
-        const campo = document.getElementById("nome");
+                alert("BOTÃO FUNCIONOU! 🎉");
 
-        const resultado = document.getElementById("resultado");
-
-
-        botao.onclick = function() {
-
-            const nome = campo.value;
-
-            resultado.textContent =
-                "🎉 " + nome + " entrou na fila!";
-
-        };
+            });
 
     </script>
 
 </body>
+
 </html>
