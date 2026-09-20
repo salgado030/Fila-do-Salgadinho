@@ -7,157 +7,154 @@
 <title>Fila do Salgado</title>
 
 <style>
-
-*{
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#120d0a;
-    color:white;
-    min-height:100vh;
-    padding:25px;
+body {
+    margin: 0;
+    padding: 25px;
+    font-family: Arial, sans-serif;
+    background: #120d0a;
+    color: white;
 }
 
-.container{
-    max-width:700px;
-    margin:auto;
+.container {
+    max-width: 700px;
+    margin: auto;
 }
 
-.topo{
-    background:linear-gradient(135deg,#2c1b14,#4a2c1d);
-    border:1px solid #654532;
-    border-radius:22px;
-    padding:25px;
-    margin-bottom:18px;
+.topo {
+    background: linear-gradient(135deg, #2c1b14, #4a2c1d);
+    border: 1px solid #654532;
+    border-radius: 22px;
+    padding: 25px;
+    margin-bottom: 18px;
 }
 
-.topo h1{
-    margin:5px 0;
-    font-size:32px;
+.topo h1 {
+    margin: 8px 0;
+    font-size: 32px;
 }
 
-.topo p{
-    color:#cdbdb3;
+.topo p {
+    color: #cdbdb3;
 }
 
-.status{
-    display:inline-block;
-    background:#203b25;
-    color:#9be3a1;
-    padding:8px 12px;
-    border-radius:20px;
-    font-size:13px;
+.status {
+    display: inline-block;
+    background: #203b25;
+    color: #9be3a1;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 13px;
 }
 
-.card{
-    background:#211713;
-    border:1px solid #49352b;
-    border-radius:20px;
-    padding:20px;
-    margin-bottom:18px;
+.card {
+    background: #211713;
+    border: 1px solid #49352b;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 18px;
 }
 
-input{
-    width:100%;
-    padding:14px;
-    border-radius:12px;
-    border:1px solid #594237;
-    background:#140e0c;
-    color:white;
-    font-size:16px;
-    outline:none;
-    margin-bottom:10px;
+input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid #594237;
+    background: #140e0c;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 10px;
 }
 
-button{
-    border:none;
-    border-radius:12px;
-    padding:13px 17px;
-    font-weight:bold;
-    cursor:pointer;
+button {
+    border: none;
+    border-radius: 12px;
+    padding: 13px 17px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.entrar{
-    width:100%;
-    background:#e4b56c;
-    color:#241812;
+.entrar {
+    width: 100%;
+    background: #e4b56c;
+    color: #241812;
 }
 
-.proximo{
-    background:#e4b56c;
-    color:#241812;
+.proximo {
+    background: #e4b56c;
+    color: #241812;
 }
 
-.limpar{
-    background:#3c2b23;
-    color:white;
+.limpar {
+    background: #3c2b23;
+    color: white;
 }
 
-.remover{
-    background:#622e28;
-    color:white;
-    padding:8px 11px;
+.remover {
+    background: #622e28;
+    color: white;
+    padding: 8px 11px;
 }
 
-.fila-topo{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-    flex-wrap:wrap;
+.fila-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-.jogador{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    background:#160f0d;
-    border:1px solid #35261f;
-    border-radius:13px;
-    padding:11px;
-    margin-top:8px;
+.jogador {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #160f0d;
+    border: 1px solid #35261f;
+    border-radius: 13px;
+    padding: 11px;
+    margin-top: 8px;
 }
 
-.numero{
-    width:35px;
-    height:35px;
-    border-radius:50%;
-    background:#3c2b23;
-    color:#e4b56c;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-weight:bold;
+.numero {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #3c2b23;
+    color: #e4b56c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
 }
 
-.nome{
-    flex:1;
-    font-weight:bold;
+.nome {
+    flex: 1;
+    font-weight: bold;
 }
 
-.vazio{
-    text-align:center;
-    color:#bbaea7;
-    padding:25px;
+.vazio {
+    text-align: center;
+    color: #bbaea7;
+    padding: 25px;
 }
 
-.aviso{
-    color:#e4b56c;
-    min-height:20px;
-    margin-top:8px;
+.aviso {
+    color: #e4b56c;
+    min-height: 20px;
+    margin-top: 10px;
 }
 
-.agora{
-    background:#18321d;
-    border:1px solid #315c38;
-    padding:14px;
-    border-radius:13px;
-    margin-top:12px;
+.agora {
+    background: #18321d;
+    border: 1px solid #315c38;
+    padding: 14px;
+    border-radius: 13px;
+    margin-top: 12px;
 }
-
 </style>
 </head>
 
@@ -165,28 +162,143 @@ button{
 
 <div class="container">
 
-<div class="topo">
+    <div class="topo">
+        <div>🍳 SALGADO</div>
 
-<div>🍳 SALGADO</div>
+        <h1>🎮 FILA DA LIVE</h1>
 
-<h1>🎮 FILA DA LIVE</h1>
+        <p>
+            Entre na fila para jogar Among Us comigo!
+        </p>
 
-<p>
-Entre na fila para jogar Among Us comigo!
-</p>
+        <span class="status">
+            🟢 FILA ABERTA
+        </span>
+    </div>
 
-<span class="status">
-🟢 FILA ABERTA
-</span>
+
+    <div class="card">
+
+        <h2>➕ Entrar na fila</h2>
+
+        <input
+            id="nome"
+            type="text"
+            maxlength="24"
+            placeholder="Digite seu nome ou @"
+        >
+
+        <button
+            type="button"
+            class="entrar"
+            id="botaoEntrar"
+        >
+            ENTRAR NA FILA
+        </button>
+
+        <div id="aviso" class="aviso"></div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="fila-topo">
+
+            <div>
+                <h2>👥 Fila atual</h2>
+
+                <span id="contador">
+                    0 pessoas
+                </span>
+            </div>
+
+            <div>
+
+                <button
+                    type="button"
+                    class="proximo"
+                    id="botaoProximo"
+                >
+                    👑 CHAMAR PRÓXIMO
+                </button>
+
+                <button
+                    type="button"
+                    class="limpar"
+                    id="botaoLimpar"
+                >
+                    🗑 LIMPAR
+                </button>
+
+            </div>
+
+        </div>
+
+        <div id="jogando"></div>
+
+        <div id="lista"></div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h3>📺 Fila do Salgado</h3>
+
+        <p>
+            Digite seu nome e entre na fila para jogar!
+        </p>
+
+    </div>
 
 </div>
 
-<div class="card">
 
-<h2>➕ Entrar na fila</h2>
+<script>
 
-<input
-id="nome"
-type="text"
-maxlength="24"
-placeholder="
+let fila = [];
+
+let jogadorAtual = "";
+
+
+/* CARREGAR FILA SALVA */
+
+try {
+
+    const filaSalva =
+        localStorage.getItem("filaDoSalgado");
+
+    if (filaSalva) {
+        fila = JSON.parse(filaSalva);
+    }
+
+    jogadorAtual =
+        localStorage.getItem("jogadorAtual") || "";
+
+} catch (erro) {
+
+    fila = [];
+    jogadorAtual = "";
+
+}
+
+
+/* SALVAR */
+
+function salvar() {
+
+    localStorage.setItem(
+        "filaDoSalgado",
+        JSON.stringify(fila)
+    );
+
+    localStorage.setItem(
+        "jogadorAtual",
+        jogadorAtual
+    );
+
+}
+
+
+/* AV
