@@ -1,304 +1,1341 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fila do Salgado</title>
+    <meta charset="UTF-8">
 
-<style>
-* {
-    box-sizing: border-box;
-}
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-body {
-    margin: 0;
-    padding: 25px;
-    font-family: Arial, sans-serif;
-    background: #120d0a;
-    color: white;
-}
+    <meta
+        name="theme-color"
+        content="#120d0a"
+    >
 
-.container {
-    max-width: 700px;
-    margin: auto;
-}
+    <title>Fila do Salgado</title>
 
-.topo {
-    background: linear-gradient(135deg, #2c1b14, #4a2c1d);
-    border: 1px solid #654532;
-    border-radius: 22px;
-    padding: 25px;
-    margin-bottom: 18px;
-}
 
-.topo h1 {
-    margin: 8px 0;
-    font-size: 32px;
-}
+    <style>
 
-.topo p {
-    color: #cdbdb3;
-}
+        /* =========================================
+           CONFIGURAÇÕES GERAIS
+        ========================================= */
 
-.status {
-    display: inline-block;
-    background: #203b25;
-    color: #9be3a1;
-    padding: 8px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-.card {
-    background: #211713;
-    border: 1px solid #49352b;
-    border-radius: 20px;
-    padding: 20px;
-    margin-bottom: 18px;
-}
 
-input {
-    width: 100%;
-    padding: 14px;
-    border-radius: 12px;
-    border: 1px solid #594237;
-    background: #140e0c;
-    color: white;
-    font-size: 16px;
-    outline: none;
-    margin-bottom: 10px;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-button {
-    border: none;
-    border-radius: 12px;
-    padding: 13px 17px;
-    font-weight: bold;
-    cursor: pointer;
-}
 
-.entrar {
-    width: 100%;
-    background: #e4b56c;
-    color: #241812;
-}
+        body {
 
-.proximo {
-    background: #e4b56c;
-    color: #241812;
-}
+            margin: 0;
 
-.limpar {
-    background: #3c2b23;
-    color: white;
-}
+            min-height: 100vh;
 
-.remover {
-    background: #622e28;
-    color: white;
-    padding: 8px 11px;
-}
+            padding: 20px;
 
-.fila-topo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
-.jogador {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: #160f0d;
-    border: 1px solid #35261f;
-    border-radius: 13px;
-    padding: 11px;
-    margin-top: 8px;
-}
+            background:
+                radial-gradient(
+                    circle at top,
+                    #3a2418 0%,
+                    #1b110d 35%,
+                    #0d0907 100%
+                );
 
-.numero {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background: #3c2b23;
-    color: #e4b56c;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-}
+            color: #ffffff;
+        }
 
-.nome {
-    flex: 1;
-    font-weight: bold;
-}
 
-.vazio {
-    text-align: center;
-    color: #bbaea7;
-    padding: 25px;
-}
+        button,
+        input {
+            font-family: inherit;
+        }
 
-.aviso {
-    color: #e4b56c;
-    min-height: 20px;
-    margin-top: 10px;
-}
 
-.agora {
-    background: #18321d;
-    border: 1px solid #315c38;
-    padding: 14px;
-    border-radius: 13px;
-    margin-top: 12px;
-}
-</style>
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+
+        /* =========================================
+           CONTAINER PRINCIPAL
+        ========================================= */
+
+        .container {
+
+            width: 100%;
+
+            max-width: 850px;
+
+            margin: 0 auto;
+        }
+
+
+        /* =========================================
+           CABEÇALHO
+        ========================================= */
+
+        .topo {
+
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 30px;
+
+            margin-bottom: 20px;
+
+            border-radius: 25px;
+
+            border: 1px solid #634633;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #382217,
+                    #24150f 60%,
+                    #170e0a
+                );
+
+            box-shadow:
+                0 15px 45px rgba(0, 0, 0, 0.35);
+        }
+
+
+        .topo::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            right: -70px;
+            top: -80px;
+
+            border-radius: 50%;
+
+            background: rgba(228, 181, 108, 0.08);
+        }
+
+
+        .marca {
+
+            color: #e4b56c;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .topo h1 {
+
+            position: relative;
+
+            margin: 0;
+
+            font-size: clamp(30px, 7vw, 48px);
+
+            line-height: 1.05;
+        }
+
+
+        .subtitulo {
+
+            margin: 15px 0 20px;
+
+            color: #cdbdb3;
+
+            font-size: 16px;
+
+            line-height: 1.5;
+        }
+
+
+        .status {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 9px 14px;
+
+            border-radius: 999px;
+
+            background: #18351f;
+
+            border: 1px solid #315f3b;
+
+            color: #9be3a1;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================================
+           CARDS
+        ========================================= */
+
+        .card {
+
+            margin-bottom: 20px;
+
+            padding: 22px;
+
+            border-radius: 22px;
+
+            background: rgba(31, 20, 15, 0.96);
+
+            border: 1px solid #4c372b;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.22);
+        }
+
+
+        .card h2 {
+
+            margin-top: 0;
+
+            margin-bottom: 18px;
+
+            font-size: 23px;
+        }
+
+
+        .card h3 {
+
+            margin-top: 0;
+        }
+
+
+        /* =========================================
+           CAMPO DE NOME
+        ========================================= */
+
+        .campo {
+
+            width: 100%;
+
+            padding: 16px;
+
+            border-radius: 14px;
+
+            border: 1px solid #5c4436;
+
+            outline: none;
+
+            background: #120c09;
+
+            color: #ffffff;
+
+            font-size: 17px;
+
+            transition:
+                border-color 0.2s,
+                box-shadow 0.2s;
+        }
+
+
+        .campo::placeholder {
+            color: #88776d;
+        }
+
+
+        .campo:focus {
+
+            border-color: #e4b56c;
+
+            box-shadow:
+                0 0 0 3px rgba(
+                    228,
+                    181,
+                    108,
+                    0.12
+                );
+        }
+
+
+        /* =========================================
+           BOTÕES
+        ========================================= */
+
+        .btn {
+
+            border: none;
+
+            border-radius: 14px;
+
+            padding: 14px 18px;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.15s,
+                filter 0.15s,
+                opacity 0.15s;
+        }
+
+
+        .btn:hover {
+
+            filter: brightness(1.08);
+
+            transform: translateY(-1px);
+        }
+
+
+        .btn:active {
+
+            transform: scale(0.97);
+        }
+
+
+        .btn-principal {
+
+            width: 100%;
+
+            margin-top: 10px;
+
+            background: #e4b56c;
+
+            color: #241812;
+
+            font-size: 16px;
+
+            padding: 16px;
+        }
+
+
+        .btn-proximo {
+
+            background: #e4b56c;
+
+            color: #241812;
+        }
+
+
+        .btn-limpar {
+
+            background: #3b2a21;
+
+            color: #ffffff;
+        }
+
+
+        .btn-remover {
+
+            background: #652f2a;
+
+            color: #ffffff;
+
+            padding: 9px 12px;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================
+           MENSAGEM
+        ========================================= */
+
+        .mensagem {
+
+            min-height: 24px;
+
+            margin-top: 10px;
+
+            color: #e4b56c;
+
+            font-weight: bold;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+           TOPO DA FILA
+        ========================================= */
+
+        .fila-cabecalho {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 15px;
+        }
+
+
+        .contador {
+
+            color: #a9998f;
+
+            font-size: 14px;
+        }
+
+
+        .acoes {
+
+            display: flex;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+        }
+
+
+        /* =========================================
+           JOGADOR ATUAL
+        ========================================= */
+
+        .agora {
+
+            margin-bottom: 15px;
+
+            padding: 17px;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #193b22,
+                    #122719
+                );
+
+            border: 1px solid #315d39;
+
+            color: #b8efbd;
+        }
+
+
+        .agora strong {
+
+            color: #ffffff;
+        }
+
+
+        /* =========================================
+           LISTA
+        ========================================= */
+
+        .lista {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 9px;
+        }
+
+
+        .jogador {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 12px;
+
+            border-radius: 15px;
+
+            background: #140d0a;
+
+            border: 1px solid #34251e;
+
+            animation:
+                aparecer 0.2s ease;
+        }
+
+
+        @keyframes aparecer {
+
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        .numero {
+
+            width: 40px;
+            height: 40px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #3a291f;
+
+            color: #e4b56c;
+
+            font-weight: 900;
+        }
+
+
+        .nome {
+
+            flex: 1;
+
+            min-width: 0;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+
+            white-space: nowrap;
+
+            font-weight: 700;
+        }
+
+
+        .vazio {
+
+            padding: 35px 20px;
+
+            text-align: center;
+
+            color: #8f8077;
+
+            border: 1px dashed #49372c;
+
+            border-radius: 15px;
+        }
+
+
+        /* =========================================
+           RODAPÉ
+        ========================================= */
+
+        .rodape {
+
+            text-align: center;
+
+            color: #6f625b;
+
+            font-size: 12px;
+
+            padding: 10px 0 25px;
+        }
+
+
+        /* =========================================
+           INDICADOR DO SISTEMA
+        ========================================= */
+
+        .sistema {
+
+            position: fixed;
+
+            right: 12px;
+
+            bottom: 12px;
+
+            padding: 7px 10px;
+
+            border-radius: 999px;
+
+            background: rgba(20, 12, 9, 0.9);
+
+            border: 1px solid #49362b;
+
+            color: #6f625b;
+
+            font-size: 10px;
+
+            z-index: 999;
+        }
+
+
+        /* =========================================
+           CELULAR
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 12px;
+            }
+
+
+            .topo {
+                padding: 23px;
+                border-radius: 20px;
+            }
+
+
+            .card {
+                padding: 17px;
+                border-radius: 18px;
+            }
+
+
+            .acoes {
+                width: 100%;
+            }
+
+
+            .btn-proximo,
+            .btn-limpar {
+                flex: 1;
+            }
+
+
+            .jogador {
+                padding: 10px;
+            }
+
+
+            .nome {
+                font-size: 14px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
 
-    <div class="topo">
-        <div>🍳 SALGADO</div>
 
-        <h1>🎮 FILA DA LIVE</h1>
+    <!-- =========================================
+         CABEÇALHO
+    ========================================== -->
 
-        <p>
+    <header class="topo">
+
+        <div class="marca">
+            🍳 SALGADO
+        </div>
+
+        <h1>
+            🎮 FILA DA LIVE
+        </h1>
+
+        <p class="subtitulo">
             Entre na fila para jogar Among Us comigo!
         </p>
 
-        <span class="status">
+        <div class="status">
             🟢 FILA ABERTA
-        </span>
-    </div>
+        </div>
+
+    </header>
 
 
-    <div class="card">
+    <!-- =========================================
+         ENTRAR NA FILA
+    ========================================== -->
 
-        <h2>➕ Entrar na fila</h2>
+    <section class="card">
+
+        <h2>
+            ➕ Entrar na fila
+        </h2>
+
 
         <input
+
             id="nome"
+
+            class="campo"
+
             type="text"
+
             maxlength="24"
+
+            autocomplete="off"
+
             placeholder="Digite seu nome ou @"
+
         >
+
 
         <button
+
+            id="entrar"
+
+            class="btn btn-principal"
+
             type="button"
-            class="entrar"
-            id="botaoEntrar"
+
         >
-            ENTRAR NA FILA
+
+            🎮 ENTRAR NA FILA
+
         </button>
 
-        <div id="aviso" class="aviso"></div>
 
-    </div>
+        <div
+            id="mensagem"
+            class="mensagem"
+        ></div>
+
+    </section>
 
 
-    <div class="card">
+    <!-- =========================================
+         FILA
+    ========================================== -->
 
-        <div class="fila-topo">
+    <section class="card">
+
+
+        <div class="fila-cabecalho">
+
 
             <div>
-                <h2>👥 Fila atual</h2>
 
-                <span id="contador">
+                <h2>
+                    👥 Fila atual
+                </h2>
+
+                <div
+                    id="contador"
+                    class="contador"
+                >
                     0 pessoas
-                </span>
+                </div>
+
             </div>
 
-            <div>
+
+            <div class="acoes">
 
                 <button
+
+                    id="proximo"
+
+                    class="btn btn-proximo"
+
                     type="button"
-                    class="proximo"
-                    id="botaoProximo"
+
                 >
+
                     👑 CHAMAR PRÓXIMO
+
                 </button>
 
+
                 <button
+
+                    id="limpar"
+
+                    class="btn btn-limpar"
+
                     type="button"
-                    class="limpar"
-                    id="botaoLimpar"
+
                 >
-                    🗑 LIMPAR
+
+                    🗑️ LIMPAR
+
                 </button>
 
             </div>
+
 
         </div>
 
-        <div id="jogando"></div>
 
-        <div id="lista"></div>
+        <div
+            id="agora"
+        ></div>
 
-    </div>
+
+        <div
+            id="lista"
+            class="lista"
+        ></div>
 
 
-    <div class="card">
+    </section>
 
-        <h3>📺 Fila do Salgado</h3>
+
+    <!-- =========================================
+         INFORMAÇÕES
+    ========================================== -->
+
+    <section class="card">
+
+        <h3>
+            📺 Fila do Salgado
+        </h3>
 
         <p>
-            Digite seu nome e entre na fila para jogar!
+            Digite seu nome ou @ para entrar na fila
+            e aguarde sua vez de jogar!
         </p>
 
-    </div>
+        <p>
+            🎮 Máximo de 50 jogadores.
+        </p>
+
+    </section>
+
+
+    <footer class="rodape">
+
+        🍳 Fila do Salgado • Among Us
+
+    </footer>
+
 
 </div>
 
 
+<!-- INDICADOR -->
+
+<div
+    id="sistema"
+    class="sistema"
+>
+    carregando...
+</div>
+
+
+
 <script>
+
+
+/* ==================================================
+   FILA DO SALGADO
+   SISTEMA PRINCIPAL
+================================================== */
+
+
+/*
+    Variáveis principais.
+*/
 
 let fila = [];
 
 let jogadorAtual = "";
 
 
-/* CARREGAR FILA SALVA */
+/* ==================================================
+   ELEMENTOS DA PÁGINA
+================================================== */
 
-try {
+const campoNome =
+    document.getElementById("nome");
 
-    const filaSalva =
-        localStorage.getItem("filaDoSalgado");
+const botaoEntrar =
+    document.getElementById("entrar");
 
-    if (filaSalva) {
-        fila = JSON.parse(filaSalva);
+const botaoProximo =
+    document.getElementById("proximo");
+
+const botaoLimpar =
+    document.getElementById("limpar");
+
+const lista =
+    document.getElementById("lista");
+
+const contador =
+    document.getElementById("contador");
+
+const mensagem =
+    document.getElementById("mensagem");
+
+const agora =
+    document.getElementById("agora");
+
+const sistema =
+    document.getElementById("sistema");
+
+
+/* ==================================================
+   CARREGAR DADOS
+================================================== */
+
+function carregarDados() {
+
+    try {
+
+        const filaSalva =
+            localStorage.getItem(
+                "fila_do_salgado"
+            );
+
+
+        const jogadorSalvo =
+            localStorage.getItem(
+                "jogador_atual_salgado"
+            );
+
+
+        if (filaSalva) {
+
+            const dados =
+                JSON.parse(filaSalva);
+
+
+            if (Array.isArray(dados)) {
+
+                fila = dados;
+
+            }
+
+        }
+
+
+        if (jogadorSalvo) {
+
+            jogadorAtual =
+                jogadorSalvo;
+
+        }
+
     }
 
-    jogadorAtual =
-        localStorage.getItem("jogadorAtual") || "";
+    catch (erro) {
 
-} catch (erro) {
+        console.error(
+            "Erro ao carregar:",
+            erro
+        );
 
-    fila = [];
-    jogadorAtual = "";
+        fila = [];
+
+        jogadorAtual = "";
+
+    }
 
 }
 
 
-/* SALVAR */
+/* ==================================================
+   SALVAR DADOS
+================================================== */
 
-function salvar() {
+function salvarDados() {
 
-    localStorage.setItem(
-        "filaDoSalgado",
-        JSON.stringify(fila)
+    try {
+
+        localStorage.setItem(
+            "fila_do_salgado",
+            JSON.stringify(fila)
+        );
+
+
+        localStorage.setItem(
+            "jogador_atual_salgado",
+            jogadorAtual
+        );
+
+    }
+
+    catch (erro) {
+
+        console.error(
+            "Erro ao salvar:",
+            erro
+        );
+
+        mostrarMensagem(
+            "⚠️ Não foi possível salvar a fila."
+        );
+
+    }
+
+}
+
+
+/* ==================================================
+   MOSTRAR MENSAGEM
+================================================== */
+
+let tempoMensagem;
+
+
+function mostrarMensagem(texto) {
+
+    clearTimeout(tempoMensagem);
+
+
+    mensagem.textContent =
+        texto;
+
+
+    tempoMensagem =
+        setTimeout(
+            function() {
+
+                mensagem.textContent =
+                    "";
+
+            },
+            3000
+        );
+
+}
+
+
+/* ==================================================
+   PROTEGER TEXTO
+================================================== */
+
+function protegerTexto(texto) {
+
+    const div =
+        document.createElement("div");
+
+
+    div.textContent =
+        texto;
+
+
+    return div.innerHTML;
+
+}
+
+
+/* ==================================================
+   ENTRAR NA FILA
+================================================== */
+
+function entrarNaFila() {
+
+
+    /* Pegar nome */
+
+    const nome =
+        campoNome.value.trim();
+
+
+    /* Verificar se digitou */
+
+    if (!nome) {
+
+        mostrarMensagem(
+            "⚠️ Digite seu nome primeiro!"
+        );
+
+
+        campoNome.focus();
+
+
+        return;
+
+    }
+
+
+    /* Verificar tamanho */
+
+    if (nome.length < 2) {
+
+        mostrarMensagem(
+            "⚠️ O nome precisa ter pelo menos 2 caracteres."
+        );
+
+
+        campoNome.focus();
+
+
+        return;
+
+    }
+
+
+    /* Verificar limite */
+
+    if (fila.length >= 50) {
+
+        mostrarMensagem(
+            "🚫 A fila está cheia!"
+        );
+
+
+        return;
+
+    }
+
+
+    /* Verificar duplicado */
+
+    const nomeExiste =
+        fila.some(
+            function(jogador) {
+
+                return (
+                    jogador.toLowerCase()
+                    ===
+                    nome.toLowerCase()
+                );
+
+            }
+        );
+
+
+    if (nomeExiste) {
+
+        mostrarMensagem(
+            "👀 Você já está na fila!"
+        );
+
+
+        return;
+
+    }
+
+
+    /* Adicionar */
+
+    fila.push(nome);
+
+
+    /* Limpar campo */
+
+    campoNome.value =
+        "";
+
+
+    /* Salvar */
+
+    salvarDados();
+
+
+    /* Atualizar */
+
+    atualizarTela();
+
+
+    /* Mensagem */
+
+    mostrarMensagem(
+        "🎉 " +
+        nome +
+        " entrou na fila!"
     );
 
-    localStorage.setItem(
-        "jogadorAtual",
+
+    /* Focar novamente */
+
+    campoNome.focus();
+
+}
+
+
+/* ==================================================
+   CHAMAR PRÓXIMO
+================================================== */
+
+function chamarProximo() {
+
+
+    if (fila.length === 0) {
+
+        mostrarMensagem(
+            "👀 A fila está vazia!"
+        );
+
+
+        return;
+
+    }
+
+
+    jogadorAtual =
+        fila.shift();
+
+
+    salvarDados();
+
+
+    atualizarTela();
+
+
+    mostrarMensagem(
+        "👑 Agora jogando: " +
         jogadorAtual
     );
 
 }
 
 
-/* AV
+/* ==================================================
+   REMOVER JOGADOR
+================================================== */
+
+function removerJogador(indice) {
+
+
+    if (
+        indice < 0 ||
+        indice >= fila.length
+    ) {
+
+        return;
+
+    }
+
+
+    const nome =
+        fila[indice];
+
+
+    fila.splice(
+        indice,
+        1
+    );
+
+
+    salvarDados();
+
+
+    atualizarTela();
+
+
+    mostrarMensagem(
+        "❌ " +
+        nome +
+        " foi removido."
+    );
+
+}
+
+
+/* ==================================================
+   LIMPAR FILA
+================================================== */
+
+function limparFila() {
+
+
+    if (fila.length === 0) {
+
+        mostrarMensagem(
+            "👀 A fila já está vazia."
+        );
+
+
+        return;
+
+    }
+
+
+    const confirmar =
+        window.confirm(
+            "Tem certeza que deseja limpar toda a fila?"
+        );
+
+
+    if (!confirmar) {
+
+        return;
+
+    }
+
+
+    fila = [];
+
+
+    jogadorAtual =
+        "";
+
+
+    salvarDados();
+
+
+    atualizarTela();
+
+
+    mostrarMensagem(
+        "🗑️ Fila limpa!"
+    );
+
+}
+
+
+/* ==================================================
+   MOSTRAR JOGADOR ATUAL
+================================================== */
+
+function atualizarJogadorAtual() {
+
+
+    if (!jogadorAtual) {
+
+        agora.innerHTML =
+            "";
+
+        return;
+
+    }
+
+
+    agora.innerHTML = `
+
+        <div class="agora">
+
+            🎮
+
+            <strong>
+                AGORA JOGANDO:
+            </strong>
+
+            ${protegerTexto(jogadorAtual)}
+
+        </div>
+
+    `;
+
+}
+
+
+/* ==================================================
+   MOSTRAR FILA
+================================================== *
