@@ -2,11 +2,10 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Teste Salgado</title>
-
+    <title>Fila do Salgado</title>
 </head>
 
 <body>
@@ -19,20 +18,44 @@
         placeholder="Digite seu nome"
     >
 
-    <button id="entrar">
+    <button
+        id="entrar"
+        type="button"
+    >
         ENTRAR NA FILA
     </button>
+
+    <p id="resultado">
+        Aguardando...
+    </p>
 
 
     <script>
 
-        document
-            .getElementById("entrar")
-            .addEventListener("click", function() {
+        window.onload = function () {
 
-                alert("BOTÃO FUNCIONOU! 🎉");
+            var botao = document.getElementById("entrar");
+            var campo = document.getElementById("nome");
+            var resultado = document.getElementById("resultado");
 
-            });
+            botao.onclick = function () {
+
+                var nome = campo.value;
+
+                if (nome === "") {
+
+                    resultado.innerHTML =
+                        "⚠️ Digite um nome primeiro!";
+
+                    return;
+                }
+
+                resultado.innerHTML =
+                    "🎉 " + nome + " entrou na fila!";
+
+            };
+
+        };
 
     </script>
 
