@@ -2,62 +2,488 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Fila do Salgado</title>
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Fila do Salgado</title>
+
+<style>
+
+/* =========================
+   BASE
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    padding: 25px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #4a2b1c 0%,
+            #24150f 35%,
+            #100a07 100%
+        );
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+
+    width: 100%;
+
+    max-width: 750px;
+
+    margin: auto;
+}
+
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+.topo {
+
+    padding: 30px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3b2418,
+            #21130d
+        );
+
+    border: 1px solid #674832;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.45);
+
+    margin-bottom: 20px;
+
+}
+
+
+.logo {
+
+    color: #e7b66b;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    font-size: 14px;
+
+}
+
+
+h1 {
+
+    margin: 10px 0;
+
+    font-size: 42px;
+
+}
+
+
+.subtitulo {
+
+    color: #cbb8aa;
+
+    line-height: 1.5;
+
+}
+
+
+.status {
+
+    display: inline-block;
+
+    padding: 9px 15px;
+
+    border-radius: 30px;
+
+    background: #183b22;
+
+    color: #9be3a1;
+
+    border: 1px solid #32613c;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================
+   CARTÕES
+========================= */
+
+.card {
+
+    padding: 22px;
+
+    margin-bottom: 20px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(32, 20, 14, 0.96);
+
+    border: 1px solid #4e392b;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.25);
+
+}
+
+
+.card h2 {
+
+    margin-top: 0;
+
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+input {
+
+    width: 100%;
+
+    padding: 16px;
+
+    border-radius: 14px;
+
+    border: 1px solid #614636;
+
+    outline: none;
+
+    background: #110b08;
+
+    color: white;
+
+    font-size: 16px;
+
+    margin-bottom: 10px;
+
+}
+
+
+input:focus {
+
+    border-color: #e7b66b;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(231,182,107,0.12);
+
+}
+
+
+input::placeholder {
+
+    color: #89776b;
+
+}
+
+
+/* =========================
+   BOTÃO
+========================= */
+
+button {
+
+    border: none;
+
+    border-radius: 14px;
+
+    padding: 15px 20px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+.entrar {
+
+    width: 100%;
+
+    background: #e7b66b;
+
+    color: #24160e;
+
+    font-size: 16px;
+
+}
+
+
+.entrar:hover {
+
+    filter: brightness(1.1);
+
+    transform: translateY(-1px);
+
+}
+
+
+.entrar:active {
+
+    transform: scale(0.98);
+
+}
+
+
+/* =========================
+   MENSAGEM
+========================= */
+
+#resultado {
+
+    min-height: 24px;
+
+    color: #e7b66b;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================
+   RODAPÉ
+========================= */
+
+.rodape {
+
+    text-align: center;
+
+    color: #76665c;
+
+    font-size: 12px;
+
+    margin-top: 30px;
+
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    body {
+
+        padding: 12px;
+
+    }
+
+    .topo {
+
+        padding: 23px;
+
+    }
+
+    h1 {
+
+        font-size: 32px;
+
+    }
+
+    .card {
+
+        padding: 18px;
+
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-    <h1>🎮 Fila do Salgado</h1>
 
-    <input
-        id="nome"
-        type="text"
-        placeholder="Digite seu nome"
-    >
-
-    <button
-        id="entrar"
-        type="button"
-    >
-        ENTRAR NA FILA
-    </button>
-
-    <p id="resultado">
-        Aguardando...
-    </p>
+<div class="container">
 
 
-    <script>
+    <div class="topo">
 
-        window.onload = function () {
+        <div class="logo">
+            🍳 SALGADO
+        </div>
 
-            var botao = document.getElementById("entrar");
-            var campo = document.getElementById("nome");
-            var resultado = document.getElementById("resultado");
+        <h1>
+            🎮 FILA DA LIVE
+        </h1>
 
-            botao.onclick = function () {
+        <div class="subtitulo">
 
-                var nome = campo.value;
+            Entre na fila para jogar
+            <strong>Among Us</strong>
+            comigo!
 
-                if (nome === "") {
+        </div>
 
-                    resultado.innerHTML =
-                        "⚠️ Digite um nome primeiro!";
+        <div class="status">
 
-                    return;
-                }
+            🟢 FILA ABERTA
 
-                resultado.innerHTML =
-                    "🎉 " + nome + " entrou na fila!";
+        </div>
 
-            };
+    </div>
 
-        };
 
-    </script>
+    <div class="card">
+
+        <h2>
+            ➕ Entrar na fila
+        </h2>
+
+
+        <input
+
+            id="nome"
+
+            type="text"
+
+            maxlength="24"
+
+            placeholder="Digite seu nome ou @"
+
+        >
+
+
+        <button
+
+            id="entrar"
+
+            class="entrar"
+
+            type="button"
+
+        >
+
+            🎮 ENTRAR NA FILA
+
+        </button>
+
+
+        <p id="resultado"></p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            👥 Fila atual
+        </h2>
+
+        <p style="color:#9c8b80;">
+
+            A fila aparecerá aqui.
+
+        </p>
+
+    </div>
+
+
+    <div class="rodape">
+
+        🍳 Fila do Salgado • Among Us
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+/*
+   NÃO ALTERAMOS A FORMA
+   COMO O BOTÃO FUNCIONA.
+*/
+
+window.onload = function () {
+
+
+    var botao =
+        document.getElementById("entrar");
+
+
+    var campo =
+        document.getElementById("nome");
+
+
+    var resultado =
+        document.getElementById("resultado");
+
+
+    botao.onclick = function () {
+
+
+        var nome =
+            campo.value.trim();
+
+
+        if (nome === "") {
+
+            resultado.innerHTML =
+                "⚠️ Digite seu nome primeiro!";
+
+            return;
+
+        }
+
+
+        resultado.innerHTML =
+            "🎉 " +
+            nome +
+            " entrou na fila!";
+
+
+        campo.value = "";
+
+    };
+
+
+};
+
+</script>
+
 
 </body>
 
